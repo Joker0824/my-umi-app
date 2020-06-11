@@ -3,8 +3,9 @@
   "scripts": {
     "start": "UMI_UI=1 umi dev",
     "build": "umi build",
+    "commit": "npx git-cz",
     "umi:plugin-list": "umi plugin list",
-    "umi:ui":"umi ui",
+    "umi:ui": "umi ui",
     "postinstall": "umi generate tmp",
     "prettier": "prettier --write '**/*.{js,jsx,tsx,ts,less,md,json}'",
     "test": "umi-test",
@@ -12,6 +13,11 @@
   },
   "gitHooks": {
     "pre-commit": "lint-staged"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
   },
   "lint-staged": {
     "*.{js,jsx,less,md,json}": [
@@ -36,6 +42,15 @@
     "yorkie": "^2.0.0"
   },
   "devDependencies": {
-    "@umijs/preset-ui": "^2.1.15"
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
+    "@umijs/preset-ui": "^2.1.15",
+    "cz-conventional-changelog": "3.2.0",
+    "husky": "^4.2.5"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
