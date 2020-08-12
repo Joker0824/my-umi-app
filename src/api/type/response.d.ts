@@ -3,7 +3,7 @@
  * @interface Response
  * @template T
  */
-declare interface Response<T = any> {
+declare interface IResponse<T = any> {
   data: T;
   message: string;
   code: number;
