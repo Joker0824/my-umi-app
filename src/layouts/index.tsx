@@ -6,7 +6,6 @@ import { ReactComponent as AdobeIcon } from '@/icons/adobe.svg';
 import { ReactComponent as AngularIcon } from '@/icons/angular.svg';
 import { ReactComponent as UserIcon } from '@/icons/user.svg';
 import { ReactComponent as LogoIcon } from '@/icons/logo.svg';
-
 const iconConfig = { width: 50, height: 50, cursor: 'pointer' };
 const layouts: FC = ({ children }) => {
   const history = useHistory();
@@ -20,7 +19,7 @@ const layouts: FC = ({ children }) => {
       <UserIcon className={style.icon} />
       <AdobeIcon className={style.icon} />
       <AngularIcon className={style.icon} />
-      <input type="number" name="" id="" />
+
       <Space size="small">
         <Button onClick={() => onClick('/list/111')}>/list</Button>
         <Button
