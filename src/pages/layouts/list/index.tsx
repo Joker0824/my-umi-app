@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './style.less';
+import style from './style.less';
 import { useParams } from 'umi';
 import { login } from '@/api/login';
 import { useRequest } from 'ahooks';
@@ -17,7 +17,8 @@ export default () => {
   console.log(data, error, loading);
   return (
     <div>
-      <h1 className={styles.title}>Page list,id={params.id}</h1>
+      <h1 className={style.title}>Page list,id={params.id}</h1>
+      <div className={style.card}></div>
     </div>
   );
 };

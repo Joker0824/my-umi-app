@@ -5,10 +5,13 @@ const routes: IRoute[] = [
   {
     path: '/',
     component: '@/layouts',
-    // wrappers: ['@/wrappers/auth'],
     routes: [
       { path: '/list/:id', component: '@/pages/layouts/list' },
-      { path: '/admin', component: '@/pages/layouts/admin' },
+      {
+        path: '/admin',
+        component: '@/pages/layouts/admin',
+        wrappers: ['@/wrappers/auth'],
+      },
     ],
   },
 ];
