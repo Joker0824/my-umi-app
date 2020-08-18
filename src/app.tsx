@@ -1,4 +1,5 @@
-import { history } from 'umi';
+import { history, RequestConfig, Route } from 'umi';
+
 /**
  * @description 在初始加载和路由切换时做一些事情
  * @export
@@ -25,3 +26,8 @@ export function render(oldRender: any) {
   console.log('render');
   oldRender();
 }
+const { AXIOS_TIMEOUT, ApiUrl } = window.g;
+export const request: RequestConfig = {
+  timeout: AXIOS_TIMEOUT,
+  prefix: ApiUrl,
+};
