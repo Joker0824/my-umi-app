@@ -3,8 +3,7 @@ import { getToken, API_KEY } from '@/utils/auth';
 import { message } from 'antd';
 import _ from 'lodash';
 import Qs from 'qs';
-import { apiConfig } from '@/api/config';
-const { AXIOS_TIMEOUT, ApiUrl } = apiConfig;
+const { AXIOS_TIMEOUT, ApiUrl } = window.g;
 const service = axios.create({
   baseURL: ApiUrl, // url = base url + request url
   timeout: AXIOS_TIMEOUT,

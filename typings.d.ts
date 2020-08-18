@@ -8,3 +8,14 @@ declare module '*.svg' {
   const url: string;
   export default url;
 }
+/**
+ * @description window全局变量
+ * @interface Window
+ */
+interface Window {
+  g: {
+    AXIOS_TIMEOUT: number;
+    ApiUrl: string;
+    WsUrl: string;
+  };
+}
