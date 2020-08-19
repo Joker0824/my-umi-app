@@ -27,10 +27,11 @@ export default defineConfig({
     [
       'import',
       {
-        libraryName: '@umijs/hooks',
-        libraryDirectory: 'lib',
+        libraryName: 'lodash',
+        libraryDirectory: '',
         camel2DashComponentName: false,
       },
+      'lodash',
     ],
   ],
   publicPath: '/public/',
