@@ -1,7 +1,6 @@
 import { defineConfig } from 'umi';
-import routes from './routes';
 export default defineConfig({
-  title: 'fxx',
+  title: '金乌系统',
   // layout: {},  ant-design-pro 的布局
   nodeModulesTransform: {
     type: 'none',
