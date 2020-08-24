@@ -34,8 +34,8 @@ service.interceptors.request.use(
 
 // 响应拦截器
 service.interceptors.response.use(
-  (response: AxiosResponse) => {
-    return response.data;
+  response => {
+    return response;
   },
   (error: AxiosError) => {
     message.error(error.message);

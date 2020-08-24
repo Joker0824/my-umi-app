@@ -1,38 +1,41 @@
 import { defineConfig } from 'umi';
+import layout from './layout';
+
 export default defineConfig({
-  title: '金乌系统',
-  // layout: {},  ant-design-pro 的布局
   nodeModulesTransform: {
     type: 'none',
   },
-  hash: true,
-  //配置是否让生成的文件包含 hash 后缀，通常用于增量发布和避免浏览器加载缓存。
+  hash: true, //配置是否让生成的文件包含 hash 后缀，通常用于增量发布和避浏览器加载缓存。
   dynamicImport: {},
-  //启用按需加载
+  layout, //pro-layout配置
   routes: [
     {
       path: '/login',
-      component: '@/pages/login',
+      // layout: false, //不使用layout(@ant-design/pro-layout)
+      component: './Login',
     },
     {
-      path: '/',
-      component: '@/layouts',
-      routes: [
-        {
-          path: '/list/:id',
-          component: '@/pages/layouts/list',
-        },
-        {
-          path: '/admin',
-          component: '@/pages/layouts/admin',
-          wrappers: ['@/wrappers/auth'],
-        },
-        {
-          name: '拓扑编辑器',
-          path: '/editorkoni',
-          component: './EditorKoni',
-        },
-      ],
+      name: '列表',
+      path: '/list/:id',
+      component: './List',
+      // hideInMenu: true,
+      // layout: {
+      //   hideMenu: true, //隐藏左侧菜单
+      //   hideNav: true, //隐藏左侧菜单
+      //   hideFooter: true, //footer
+      // },
+    },
+    {
+      name: '权限页',
+      path: '/admin',
+      component: './Admin',
+      // access: 'canReadAdmin', //配置页面权限
+      // wrappers: ['@/wrappers/auth'],
+    },
+    {
+      name: '拓扑编辑器',
+      path: '/editorkoni',
+      component: './EditorKoni',
     },
   ],
   extraBabelPlugins: [
