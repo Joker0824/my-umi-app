@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Input, Row, Col, Checkbox } from 'antd';
+import { Form, Input, Row, Col, Checkbox, Select } from 'antd';
 import { FormProp } from './type';
 import { useMount } from 'ahooks';
 const ResultForm: React.FC<FormProp> = ({
@@ -56,12 +56,20 @@ const ResultForm: React.FC<FormProp> = ({
         </Col>
         <Col span={6}>
           <Form.Item label="输出项" name="outputName">
-            <Input />
+            <Select
+              mode="tags"
+              style={{ width: '100%' }}
+              placeholder="输入参数后回车"
+            />
           </Form.Item>
         </Col>
         <Col span={6}>
           <Form.Item label="输出值" name="outputValue">
-            <Input />
+            <Select
+              mode="tags"
+              style={{ width: '100%' }}
+              placeholder="输入参数后回车"
+            />
           </Form.Item>
         </Col>
         <Col span={6}>

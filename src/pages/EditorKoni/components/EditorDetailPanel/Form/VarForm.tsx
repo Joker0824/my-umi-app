@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Input, Col, Row } from 'antd';
+import { Form, Input, Col, Row, Select } from 'antd';
 import { FormProp } from './type';
 import { useMount } from 'ahooks';
 
@@ -29,17 +29,29 @@ const VarForm: React.FC<FormProp> = ({
         </Col>
         <Col span={6}>
           <Form.Item label="变量名" name="variableName">
-            <Input />
+            <Select
+              mode="tags"
+              style={{ width: '100%' }}
+              placeholder="输入参数后回车"
+            />
           </Form.Item>
         </Col>
         <Col span={6}>
           <Form.Item label="变量值" name="variableValue">
-            <Input />
+            <Select
+              mode="tags"
+              style={{ width: '100%' }}
+              placeholder="输入参数后回车"
+            />
           </Form.Item>
         </Col>
         <Col span={6}>
           <Form.Item label="变量描述" name="variableDescription">
-            <Input />
+            <Select
+              mode="tags"
+              style={{ width: '100%' }}
+              placeholder="输入参数后回车"
+            />
           </Form.Item>
         </Col>
       </Row>

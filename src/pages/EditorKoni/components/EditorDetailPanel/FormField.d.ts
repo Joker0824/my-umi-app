@@ -1,4 +1,3 @@
-import { Store } from 'rc-field-form/lib/interface';
 declare type StrategyType = 'random' | 'linked' | 'child' | 'parent';
 declare type threadCountType =
   | '1'
@@ -13,9 +12,9 @@ declare type threadCountType =
 declare type ZeroOrOne = 0 | 1;
 /**
  * @description 全局配置
- * @interface GlobalField
+ * @interface GlobalFields
  */
-declare interface GlobalField {
+declare interface GlobalFields {
   spiderName: string;
   submitStrategy: StrategyType;
   threadCount: threadCountType;

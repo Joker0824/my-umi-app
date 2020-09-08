@@ -2,14 +2,13 @@ import React from 'react';
 import { useModel } from 'umi';
 import { Col, Row, Input, Form, Select } from 'antd';
 import { Store } from 'rc-field-form/lib/interface';
-import { GlobalField } from '../FormField';
 const { Item } = Form;
 const submitStrategyOptions = ['child', 'linked', 'parent', 'random'];
 const threadCountTypeOptions = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
 const GlobalForm = () => {
   const { globalFormData, setGlobalFormData } = useModel('useDetailPanelModel');
   const onValuesChange = (changedValues: Store, allValues: Store) => {
-    setGlobalFormData(allValues as GlobalField);
+    setGlobalFormData(allValues as GlobalFields);
   };
 
   return (

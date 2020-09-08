@@ -105,17 +105,29 @@ const HttpForm: React.FC<FormProp> = ({
         </Col>
         <Col span={6}>
           <Item label="cookie名" name="cookieName">
-            <Input />
+            <Select
+              mode="tags"
+              style={{ width: '100%' }}
+              placeholder="输入参数后回车"
+            />
           </Item>
         </Col>
         <Col span={6}>
           <Item label="cookie值" name="cookieValue">
-            <Input />
+            <Select
+              mode="tags"
+              style={{ width: '100%' }}
+              placeholder="输入参数后回车"
+            />
           </Item>
         </Col>
         <Col span={6}>
           <Item label="cookie描述" name="cookieDescription">
-            <Input />
+            <Select
+              mode="tags"
+              style={{ width: '100%' }}
+              placeholder="输入参数后回车"
+            />
           </Item>
         </Col>
       </Row>
@@ -138,19 +150,31 @@ const HttpForm: React.FC<FormProp> = ({
 
         <Col span={6}>
           <Item label="参数描述" name="parameterDescription">
-            <Input />
+            <Select
+              mode="tags"
+              style={{ width: '100%' }}
+              placeholder="输入参数后回车"
+            />
           </Item>
         </Col>
       </Row>
       <Row gutter={20}>
         <Col span={6}>
           <Item label="参数名" name="parameterName">
-            <Input />
+            <Select
+              mode="tags"
+              style={{ width: '100%' }}
+              placeholder="输入参数后回车"
+            />
           </Item>
         </Col>
         <Col span={6}>
           <Item label="参数值" name="parameterValue">
-            <Input />
+            <Select
+              mode="tags"
+              style={{ width: '100%' }}
+              placeholder="输入参数后回车"
+            />
           </Item>
         </Col>
         <Col span={6}>
