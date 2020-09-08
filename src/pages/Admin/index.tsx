@@ -8,7 +8,6 @@ export default () => {
     '@@initialState',
   );
   const access = useAccess();
-  console.log(access);
   return (
     <div>
       <h1 className={styles.title}>{JSON.stringify(access)}</h1>

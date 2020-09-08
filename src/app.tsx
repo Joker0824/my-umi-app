@@ -1,19 +1,17 @@
 import React from 'react';
-import { history, RequestConfig, Route } from 'umi';
+import { RequestConfig } from 'umi';
 import RightContent from '@/components/render/RightContent';
-import { login } from './api/login';
-import { setToken } from './utils/auth';
-import { BasicLayoutProps, MenuDataItem } from '@ant-design/pro-layout';
+import { BasicLayoutProps } from '@ant-design/pro-layout';
 import AppHeader from './components/render/AppHeader';
 import Title from './components/render/Title';
-import { Menu, MenuItem } from './components/render';
+import { Menu } from './components/render';
 /**
  * @description 在初始加载和路由切换时做一些事情
  * @export
  * @param {*} { location, routes, action }
  */
 export function onRouteChange({ location, routes, action }: any) {
-  console.log(location);
+  // console.log(location);
 }
 
 /**
@@ -22,7 +20,6 @@ export function onRouteChange({ location, routes, action }: any) {
  * @param {*} { routes }
  */
 export function patchRoutes({ routes }: any) {
-  console.log('patchRoutes');
   routes.unshift({
     path: '/foo',
     exact: true,
@@ -30,7 +27,7 @@ export function patchRoutes({ routes }: any) {
   });
 }
 export function render(oldRender: any) {
-  console.log('render');
+  // console.log('render');
   oldRender();
 }
 const { AXIOS_TIMEOUT, ApiUrl } = window.g;
@@ -43,13 +40,14 @@ export async function getInitialState() /* : Promise<{
   settings?: LayoutSettings;
 }>   */ {
   try {
-    const {
-      data: { data },
-    } = await login({ username: 'admin', password: '123456' });
-    if (data.token) {
-      setToken(data.token);
-    }
-    return data;
+    // const {
+    //   data: { data },
+    // } = await login({ username: 'admin', password: '123456' });
+    // if (data.token) {
+    //   setToken(data.token);
+    // }
+    // return data;
+    return { token: 'sss' };
   } catch (e) {
     console.log(e);
   }
@@ -82,10 +80,10 @@ export const layout = (
     disableContentMargin: false,
     logo: '/logo.svg',
     primaryColor: '#1890ff',
-    contentStyle: { backgroundColor: '#ff0000', padding: 0 },
+    contentStyle: { padding: 0 },
     collapsedButtonRender: false,
     breadcrumbRender(route) {
-      console.log(route);
+      // console.log(route);
       return route;
     },
     headerRender(props: BasicLayoutProps) {
@@ -97,9 +95,9 @@ export const layout = (
     // menuItemRender(itemProps: MenuDataItem) {
     //   return <MenuItem {...itemProps} />;
     // },
-    // menuRender(props) {
-    //   return <Menu />;
-    // },
+    menuRender(props) {
+      return <Menu />;
+    },
     // footerRender: () => <Footer />,
     // onPageChange: () => {
     //   // 如果没有登录，重定向到 login

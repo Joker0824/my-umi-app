@@ -4,21 +4,24 @@
   display: flex;
   align-items: center;
   :global {
-    .command .anticon {
+    .command .anticon,
+    .anticon {
       display: inline-block;
       width: 27px;
       height: 27px;
+      font-size: 18px;
       margin: 0 6px;
       padding-top: 6px;
       text-align: center;
       cursor: pointer;
-
+      border: 1px solid #fff;
       &:hover {
         border: 1px solid @item-active-bg;
       }
     }
 
-    .disable .anticon {
+    .disable .anticon,
+    .anticon {
       color: @text-color-secondary;
       cursor: auto;
 

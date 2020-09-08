@@ -4,3 +4,9 @@
   height: 3000px;
   box-shadow: @card-shadow;
 }
+.customSelect {
+  :global(.ant-select-selector) {
+    max-height: 32px;
+    overflow: auto;
+  }
+}
