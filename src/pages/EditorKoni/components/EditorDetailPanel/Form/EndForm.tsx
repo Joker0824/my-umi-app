@@ -1,7 +1,6 @@
 import React from 'react';
 import { Form, Input, Row, Col } from 'antd';
 import { FormProp } from './type';
-import initialState from '@/.umi/plugin-initial-state/models/initialState';
 import { useMount } from 'ahooks';
 const EndForm: React.FC<FormProp> = ({
   itemData,

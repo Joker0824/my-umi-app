@@ -5,7 +5,7 @@ import { Store } from 'ahooks/lib/useAntdTable';
  * @interface FormProp
  * @template T
  */
-export interface FormProp {
+export declare interface FormProp {
   itemData: any;
   onValuesChange: Callbacks['onValuesChange'];
   updateItem: (values: Store) => void;

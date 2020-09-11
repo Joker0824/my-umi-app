@@ -12,9 +12,7 @@ import { KoniDetailPanel } from './components/EditorDetailPanel';
 import { KoniItemPanel } from './components/EditorItemPanel';
 import { KoniToolbar } from './components/EditorToolbar';
 import EditorRegisterNode from './components/EditorRegisterNode';
-import { GlobalForm } from './components/EditorDetailPanel/Form';
 import styles from './index.less';
-import { isEmptyObject } from '@/utils/logic';
 GGEditor.setTrackable(false);
 const addFormData = (data: Object) => {
   const formData = new FormData();
