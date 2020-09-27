@@ -23,7 +23,7 @@ const LoginForm = () => {
       const { code, msg, resource } = result;
       if (code === 1) {
         setToken(resource);
-        history.replace('/');
+        history.replace('/task-manage/task-list');
       } else {
         message.warning(msg);
       }

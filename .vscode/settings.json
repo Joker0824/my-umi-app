@@ -12,6 +12,7 @@
     "htmlunit",
     "koni",
     "renwuliebiao",
-    "sysmanage"
+    "sysmanage",
+    "tabpane"
   ]
 }

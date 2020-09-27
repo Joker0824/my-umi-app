@@ -28,9 +28,7 @@ export function onRouteChange({
   matchedRoutes,
   location,
   action,
-}: any) {
-  console.log(location.pathname);
-}
+}: any) {}
 
 /**
  * @description 修改路由
