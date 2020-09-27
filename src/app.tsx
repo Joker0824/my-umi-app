@@ -1,17 +1,35 @@
 import React from 'react';
-import { RequestConfig } from 'umi';
+import { RequestConfig, history } from 'umi';
 import RightContent from '@/components/render/RightContent';
 import { BasicLayoutProps } from '@ant-design/pro-layout';
 import AppHeader from './components/render/AppHeader';
 import Title from './components/render/Title';
 import { Menu } from './components/render';
+import { getToken } from './utils/auth';
+
+const { AXIOS_TIMEOUT, ApiUrl } = window.g;
+export const request: RequestConfig = {
+  timeout: AXIOS_TIMEOUT,
+  prefix: ApiUrl,
+};
+
 /**
  * @description 在初始加载和路由切换时做一些事情
  * @export
- * @param {*} { location, routes, action }
+ * @param {*} {
+ *   routes,
+ *   matchedRoutes,
+ *   location,
+ *   action,
+ * }
  */
-export function onRouteChange({ location, routes, action }: any) {
-  // console.log(location);
+export function onRouteChange({
+  routes,
+  matchedRoutes,
+  location,
+  action,
+}: any) {
+  console.log(location.pathname);
 }
 
 /**
@@ -26,18 +44,29 @@ export function patchRoutes({ routes }: any) {
     component: require('@/extraRoutes/foo').default,
   });
 }
+/**
+ * @description 比如用于渲染之前做权限校验
+ * @export
+ * @param {*} oldRender
+ */
 export function render(oldRender: any) {
-  // console.log('render');
-  oldRender();
+  const isLogin = !!getToken();
+  if (isLogin) {
+    oldRender();
+  } else {
+    history.push('/login');
+    oldRender();
+  }
 }
-const { AXIOS_TIMEOUT, ApiUrl } = window.g;
-export const request: RequestConfig = {
-  timeout: AXIOS_TIMEOUT,
-  prefix: ApiUrl,
-};
+
+/**
+ * @description 设置初始状态
+ * @export
+ * @returns
+ */
 export async function getInitialState() /* : Promise<{
   currentUser?: API.CurrentUser;
-  settings?: LayoutSettings;
+  settings?: LayokutSettings;
 }>   */ {
   try {
     // const {
@@ -67,7 +96,12 @@ export async function getInitialState() /* : Promise<{
   //   settings: defaultSettings,
   // };
 }
-export const layout = (
+export /**
+ * @description 设置pro-layout
+ * @param {ILoginResponse} initialState
+ * @returns {BasicLayoutProps}
+ */
+const layout = (
   /* {
   initialState,
 }: {
@@ -81,23 +115,31 @@ export const layout = (
     logo: '/logo.svg',
     primaryColor: '#1890ff',
     contentStyle: { padding: 0 },
-    collapsedButtonRender: false,
-    breadcrumbRender(route) {
-      // console.log(route);
-      return route;
-    },
-    headerRender(props: BasicLayoutProps) {
-      return <AppHeader {...props} />;
-    },
+    // loading: true,
+    iconfontUrl: '//at.alicdn.com/t/font_2026404_132bpfp2kuk.js',
+    contentWidth: 'Fluid',
+    siderWidth: 150,
+    fixedHeader: false, //是否固定 header 到顶部
+    fixSiderbar: true, //是否固定导航
+    // collapsedButtonRender: false,
+    pageTitleRender: false,
+    // headerRender(props: BasicLayoutProps) {
+    //   return <AppHeader {...props} />;
+    // },
+    // breadcrumbRender(route) {
+    //   console.log(route);
+    //   return route;
+    // },
     headerTitleRender(props: BasicLayoutProps) {
       return <Title {...props} />;
     },
     // menuItemRender(itemProps: MenuDataItem) {
     //   return <MenuItem {...itemProps} />;
     // },
-    menuRender(props) {
-      return <Menu />;
-    },
+    // menuRender(props: BasicLayoutProps) {
+    //   return <Menu {...props} />;
+    // },
+
     // footerRender: () => <Footer />,
     // onPageChange: () => {
     //   // 如果没有登录，重定向到 login

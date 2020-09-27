@@ -1,12 +1,11 @@
 import { Col, Row } from 'antd';
 import GGEditor, { Koni } from 'gg-editor';
 import { useModel } from 'umi';
-// import { PageContainer } from '@ant-design/pro-layout';
 import React, { useRef, useEffect } from 'react';
 import _ from 'lodash';
 import { useRequest } from 'ahooks';
 // import EditorMinimap from './components/EditorMinimap';
-import { save, getNodes } from '@/api/login';
+import { saveFlow } from '@/api/flow';
 import { KoniContextMenu } from './components/EditorContextMenu';
 import { KoniDetailPanel } from './components/EditorDetailPanel';
 import { KoniItemPanel } from './components/EditorItemPanel';
@@ -22,7 +21,7 @@ const addFormData = (data: Object) => {
 export default () => {
   const ref = useRef();
   const { globalFormData } = useModel('useDetailPanelModel');
-  const { run: saveNodes } = useRequest(save, {
+  const { run: handleSaveFlow } = useRequest(saveFlow, {
     manual: true,
     onSuccess: (result, params) => {
       console.log(params);
@@ -39,23 +38,23 @@ export default () => {
    * @returns {any[]}
    */
 
-  const getData = (): { nodes?: any[]; edges?: any[] } => {
+  const getData = () => {
     const editor: any = ref.current;
     const data: { nodes?: any[]; edges?: any[] } = editor.propsAPI.save();
-    if (!data.nodes) {
-      return { nodes: [globalFormData] };
-    }
-    data.nodes.push(globalFormData);
-    return data;
+    return JSON.stringify(data);
   };
 
   /**
    * @description 保存
    */
   const handleSave = () => {
-    console.log(getData());
-    const formattedData = addFormData(getData());
-    saveNodes(formattedData);
+    const formattedData = getData();
+
+    handleSaveFlow({
+      flowJson: formattedData,
+      flowName: Math.random() + 'flowName',
+      verify: false,
+    });
   };
   return (
     <GGEditor className={styles.editor} ref={ref as any}>

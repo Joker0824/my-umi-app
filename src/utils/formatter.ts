@@ -20,6 +20,7 @@ const boolean2Number = <T extends Object | Array<any>>(
   });
   return obj;
 };
+
 export /**
  * @description 把对象或者数组里面的1和0转换成true和false
  * @template T

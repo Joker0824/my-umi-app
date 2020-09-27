@@ -1,4 +1,4 @@
-import axios, { AxiosRequestConfig, AxiosResponse, AxiosError } from 'axios';
+import axios, { AxiosRequestConfig, AxiosError } from 'axios';
 import { getToken, API_KEY } from '@/utils/auth';
 import { message } from 'antd';
 import _ from 'lodash';
@@ -10,9 +10,12 @@ const service = axios.create({
   withCredentials: true, // send cookies when cross-domain requests
   paramsSerializer(params) {
     // 去除 空字符串,null,undefined
-    let formatParams = _.omitBy(params, value =>
-      [null, '', undefined].includes(value),
-    );
+    let formatParams = _.omitBy(params, value => {
+      if (_.isString(value)) {
+        value = value.trim();
+      }
+      return [null, '', undefined].includes(value);
+    });
     let res = Qs.stringify(formatParams, { arrayFormat: 'brackets' });
     return res;
   },
@@ -35,10 +38,10 @@ service.interceptors.request.use(
 // 响应拦截器
 service.interceptors.response.use(
   response => {
-    return response;
+    return response.data;
   },
   (error: AxiosError) => {
-    message.error(error.message);
+    return error;
   },
 );
 

@@ -12,9 +12,7 @@ export /**
  * @description 获取token
  * @returns {(string | null)} token
  */
-const getToken = (): string | null => {
-  return sessionStorage.getItem(API_KEY);
-};
+const getToken = () => sessionStorage.getItem(API_KEY);
 
 export /**
  * @description 删除token

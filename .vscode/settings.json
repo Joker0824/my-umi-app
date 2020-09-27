@@ -1,10 +1,17 @@
 {
   "typescript.tsdk": "node_modules/typescript/lib",
   "cSpell.words": [
+    "Rwgl",
+    "Sjgl",
+    "Xtgl",
+    "alicdn",
     "anticon",
+    "chuangjianrenwu",
     "datasource",
+    "gjgl",
     "htmlunit",
     "koni",
+    "renwuliebiao",
     "sysmanage"
   ]
 }

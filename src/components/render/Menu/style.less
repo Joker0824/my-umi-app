@@ -1,18 +1,21 @@
+@import '~antd/es/style/themes/default.less';
+
 .menu {
   padding-top: 60px;
+  border-right: @border-width-base @border-style-base @border-color-base;
   .menuItem {
     height: auto;
     line-height: 1;
     display: flex;
-    flex-direction: column;
     align-items: center;
     padding-top: 8px;
     padding-bottom: 8px;
+    color: @primary-color;
     p {
       margin-bottom: 0;
     }
     svg {
-      font-size: 30px;
+      font-size: 20px;
       margin-bottom: 5px;
     }
   }

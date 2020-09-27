@@ -2,7 +2,7 @@
  * @description 用户登录所需参数
  * @interface ILoginParams
  */
-declare interface ILoginParams {
+declare interface ILoginData {
   username: string;
   password: string;
 }

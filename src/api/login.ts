@@ -1,30 +1,13 @@
 import request from '@/utils/request';
-import { AxiosPromise } from 'axios';
-export /**
- * @description 登录
- * @param {ILoginForm} params
- */
-const login = (params: ILoginParams) =>
+import _ from 'lodash';
+import { formatFromData } from '@/utils/helper';
+
+export const login = (data: ILoginData) =>
   request({
-    url: '/user/login',
-    method: 'post',
-    params,
-  }) as AxiosPromise<IResponse<ILoginResponse>>;
-export /**
- * @description 登录
- * @param {ILoginForm} params
- */
-const save = (data: FormData) =>
-  request({
-    url: '/spider/save',
+    url: '/login',
     method: 'post',
     headers: {
-      'Content-Type': 'multipart/form-data',
+      'Content-Type': 'application/x-www-form-urlencoded',
     },
-    data,
-  });
-export const getNodes = () =>
-  request({
-    url: '/spider/get',
-    method: 'get',
+    data: formatFromData(data),
   });
