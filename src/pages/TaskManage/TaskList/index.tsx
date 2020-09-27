@@ -9,10 +9,11 @@ import {
 } from '@ant-design/icons';
 import { useAntdTable, useBoolean } from 'ahooks';
 import { PaginatedParams } from 'ahooks/lib/useAntdTable';
-import { getTaskList } from '@/api/task';
+import { getTaskList, editTask } from '@/api/task';
 import style from './style.less';
 import { ReturnList } from './type';
 import Cron from '@/components/Cron';
+import { useRequest } from 'umi';
 
 /**
  * @description 表单字段
@@ -39,6 +40,7 @@ const TaskList = () => {
   const [visible, { setTrue: showModal, setFalse: hideModal }] = useBoolean(
     false,
   );
+  const [currentTask, setCurrentTask] = useState<ITaskDetailResponse>();
   const cronRef = useRef<{ generate: () => string }>(null);
   const { tableProps, search } = useAntdTable<ReturnList>(getData, {
     form,
@@ -47,6 +49,16 @@ const TaskList = () => {
       return { total, list } as any;
     },
   });
+  const { loading, run: editTaskRequest } = useRequest(editTask, {
+    manual: true,
+    onSuccess(result) {
+      console.log(result);
+    },
+  });
+  const handleEditTask = (cron: string) => {
+    const { flowId, isRegular, taskId, taskName, description } = currentTask!;
+    editTaskRequest({ flowId, isRegular, taskId, taskName, cron, description });
+  };
 
   const { submit } = search;
   const columns: ColumnsType<ITaskDetailResponse> = [
@@ -58,10 +70,13 @@ const TaskList = () => {
       title: 'cron',
       dataIndex: 'cron',
       width: 80,
-      render: (cron: string) => {
+      render: (cron, record, index) => {
         return (
           <Button
-            onClick={showModal}
+            onClick={() => {
+              setCurrentTask(record);
+              showModal();
+            }}
             size="small"
             type="primary"
             icon={<EditOutlined />}
@@ -139,12 +154,13 @@ const TaskList = () => {
       title="编辑Cron"
       visible={visible}
       onOk={() => {
-        console.log(cronRef.current?.generate());
+        const cron = cronRef.current?.generate()!;
+        handleEditTask(cron);
       }}
       cancelText="取消"
       onCancel={hideModal}
     >
-      <Cron value="000000" ref={cronRef} />
+      <Cron value="* 1,2 * * * ? *" ref={cronRef} />
     </Modal>
   );
 

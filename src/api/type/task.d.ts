@@ -53,12 +53,12 @@ declare interface ITaskDetailResponse {
  * @description 编辑任务params类型
  * @interface IEditTaskParams
  */
-declare interface IEditTaskParams {
+declare interface IEditTaskData {
   cron?: string;
   description?: string;
   flowId: string;
   isRegular: boolean;
-  taskId: string;
+  taskId: number;
   taskName: string;
 }
 

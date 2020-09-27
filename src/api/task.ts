@@ -37,11 +37,11 @@ export /**
  * @description 编辑任务
  * @param {IEditTaskParams} params
  */
-const editTask = (params: IEditTaskParams) =>
+const editTask = (data: IEditTaskData) =>
   request({
     url: '/task/edit',
     method: 'put',
-    params,
+    data,
   });
 
 export /**
