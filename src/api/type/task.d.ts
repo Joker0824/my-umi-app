@@ -2,12 +2,12 @@
  * @description 添加新任务data类型
  * @interface ICreateTaskData
  */
-declare interface ICreateTaskData {
-  cron: string;
-  description: string;
-  flowId?: string;
-  isRegular?: boolean;
-  taskName?: string;
+declare interface IAddTaskData {
+  cron?: string;
+  description?: string;
+  flowId: string;
+  isRegular: boolean;
+  taskName: string;
 }
 
 declare type ITaskIdList = number[];

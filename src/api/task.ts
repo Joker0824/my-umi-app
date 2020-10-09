@@ -4,12 +4,14 @@ export /**
  * @description 创建新任务
  * @param {ICreateTaskData} data
  */
-const createTask = (data: ICreateTaskData) =>
-  request({
+const addTask = (data: IAddTaskData) => {
+  console.log(data);
+  return request({
     url: '/task/add',
     method: 'post',
     data,
   });
+};
 
 export /**
  * @description 删除任务
@@ -37,12 +39,13 @@ export /**
  * @description 编辑任务
  * @param {IEditTaskParams} params
  */
-const editTask = (data: IEditTaskData) =>
-  request({
+const editTask = (data: IEditTaskData) => {
+  return request({
     url: '/task/edit',
     method: 'put',
     data,
   });
+};
 
 export /**
  * @description 得到任务列表
