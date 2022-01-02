@@ -21,11 +21,12 @@ const LoginForm = () => {
     manual: true,
     onSuccess(result) {
       const { code, msg, resource } = result;
+      console.log(code);
       if (code === 1) {
         setToken(resource);
         history.replace('/task-manage/task-list');
       } else {
-        message.warning(msg);
+        message.warning('登录失败');
       }
     },
   });
